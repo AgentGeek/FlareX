@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_browser"
+            android:contentDescription="@string/cd_browser"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:layout_marginHorizontal="10dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/space_browser"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_cloudflare"
+            android:contentDescription="@string/cd_cloudflare_logo"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:layout_marginHorizontal="10dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/space_server"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_server"
+            android:contentDescription="@string/cd_server"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_lock"
+        android:contentDescription="@string/cd_secure"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="80dp"
+        android:id="@+id/ssl_flexible_img"
+        app:tint="@color/statusActive" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_lock"
+        android:contentDescription="@string/cd_secure"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="260dp"
+        android:id="@+id/ssl_full_img"
+        app:tint="@color/statusActive"/>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_certificate"
+        android:contentDescription="@string/cd_server_certificate"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ssl_strict_img"
+        app:tint="@color/secondary"/>
+
+</RelativeLayout>

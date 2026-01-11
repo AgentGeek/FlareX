@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/secondary"
+            android:textAlignment="center"
+            android:text="@string/helper"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_close"
+            android:padding="12dp"
+            android:id="@+id/close"
+            android:src="@drawable/ic_close"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 1: Goto dash -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:id="@+id/helper_text_01"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_helper_01"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coldcloud_help_01"/>
+
+            <!-- 2: Go To Profile -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:id="@+id/helper_text_02"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_helper_02"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coldcloud_help_02"/>
+
+            <!-- 3: Select API Tokens -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:id="@+id/helper_text_03"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_helper_03"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coldcloud_help_03"/>
+
+            <!-- 4: Locate Global Key -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:id="@+id/helper_text_04"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_helper_04"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coldcloud_help_04"/>
+
+            <!-- 5: Done -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:id="@+id/helper_text_05"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_helper_05"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coldcloud_help_05"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

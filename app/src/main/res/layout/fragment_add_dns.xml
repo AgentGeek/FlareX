@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Base Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/record_type"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/record_name_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            app:counterEnabled="true"
+            app:counterMaxLength="255"
+            android:theme="@style/Theme.ColdCloud.TextInput"
+            style="@style/Theme.ColdCloud.TextInput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:typeface="normal"
+                android:fontFamily="@font/hack_regular"
+                android:id="@+id/record_name"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <!-- TTL and proxy -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/record_ttl"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/cd_proxy"
+            android:src="@drawable/ic_proxied"
+            android:id="@+id/record_proxy"/>
+
+    </LinearLayout>
+
+    <!-- Content -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/record_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="10dp"
+        android:hint="@string/content"
+        android:theme="@style/Theme.ColdCloud.TextInput"
+        style="@style/Theme.ColdCloud.TextInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hack_regular"
+            android:id="@+id/record_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Save -->
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="10dp"
+        android:layout_gravity="end"
+
+        android:text="@string/add"
+        android:id="@+id/record_add"/>
+
+</LinearLayout>

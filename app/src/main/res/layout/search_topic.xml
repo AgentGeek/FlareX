@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet"
+    android:clickable="true"
+    android:focusable="true">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="75dp"
+        android:layout_height="12dp"
+        app:cardCornerRadius="50dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp"
+        android:backgroundTint="@color/background_grey"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/search_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="8dp"
+        android:theme="@style/Theme.ColdCloud.TextInput"
+        style="@style/Theme.ColdCloud.TextInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_input"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

@@ -1,0 +1,101 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+- [!] Create firewall rule
+- [!] Handle Application Update
+- [!] Handle Table on blog post
+
+## [0.1.9] - 2022
+- Add World Map Visualization
+- Add Account Manager
+- Add Apps View
+- Add Whois
+- Add History (Audit Log)
+- Add Cloudflare ips
+- Add Biometric Authentication
+- Add Light Theme
+- Correct some bugs
+- Upgrade to Gradle 8 and to JDK 17
+
+## [0.1.8] - 2023-04-09
+- Change layout depending on token permissions
+- Refresh Token Permissions
+- ImageDownloader Settings
+- Improve Error Handling
+- Review all listener
+- Better back handler
+- Fix some bug (specially on start)
+
+## [0.1.7] - 2022-08-29
+- Add the possibility to use revocable token
+- Fix bug when dashboard was not updated when changing zone
+- Fix bug when back is pressed
+- Test Token before adding it
+- Alert are now better displayed
+- Better image loader + cache
+
+## [0.1.6] - 2022-07-22
+- Add application crash report
+
+## [0.1.5] - 2022-07-03
+- Fix some bug
+- Fix bug on cloudflare status
+- Add possibility to edit dns record
+- Add community
+- Add "moved" icon status
+- Clicking the zone status icon now display the status
+- Improve image loading + cache
+- Add Application Log
+
+## [0.1.4] - 2022-04-06
+- Improve Performance
+- Add origin Certificates
+- Add Always Online
+- Add Mirage
+- Add Polish
+- Add WebP
+- Add Privacy Pass
+- Add HTTP2 & HTTP3
+- Add History (you can now use back)
+- Add Country Table
+- Dashboard now keep data 5m before refreshing
+- Add view behind dns record when swiping it
+- Add Dark Amoled Theme
+
+## [0.1.3] - 2022-02-13
+- Improve the chart for too recent domain
+- Logout Improvement
+- Theme Improvement
+- Fix Synchronized chart
+- Fix Crash when view changed too quickly
+- Add firewall rules
+- Add Chart lookup (long press)
+- Add help on login screen
+- Add Rate/Feedback
+- Add Cloudflare Blog
+- Add Cloudflare Blog Notifications
+- Add Daily stats
+- Add App related link
+
+## [0.1.2] - 2021-12-29
+- Add Notification View
+- Add Early Hints (Beta)
+- Add Auto Minify
+- Add Threats Chart
+- Fix Under Attack Mode
+- Fix Browser Cache TTL
+- Fix Caching Level
+- Fix Change Encryption Mode
+- Fix Performance Cached Chart
+- Fix Startup Crash when remember zone is enable on android 10+
+- Improve CloudFlare Status
+- Notify when a plan is not enough to use this api request
+
+## [0.1.1] - 2021-11-26
+- Can now add DNS Record
+- Can now delete DNS Record
+- Fix "pending" status logo
+- Add CloudFlare status
+
+## [0.1.0]
+- Initial Release

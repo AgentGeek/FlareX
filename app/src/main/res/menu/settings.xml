@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/cloudflare_status"
+        android:icon="@drawable/ic_cloudflare"
+        android:id="@+id/nav_cloudflare_status"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="@string/logout"
+        android:icon="@drawable/ic_logout"
+        android:id="@+id/nav_logout"
+        app:showAsAction="always"/>
+
+</menu>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="available_theme">
+        <item>Dark</item>
+        <item>Dark Amoled</item>
+        <item>Light</item>
+    </string-array>
+
+    <string-array name="firewall_action">
+        <item>block</item>
+        <item>challenge</item>
+        <item>whitelist</item>
+        <item>js_challenge</item>
+        <item>managed_challenge</item>
+    </string-array>
+
+    <string-array name="tls_version">
+        <item>1.0</item>
+        <item>1.1</item>
+        <item>1.2</item>
+        <item>1.3</item>
+    </string-array>
+
+    <string-array name="pseudo_ipv4">
+        <item>Off</item>
+        <item>Add Header</item>
+        <item>Overwrite Headers</item>
+    </string-array>
+
+    <string-array name="dns_records">
+        <item>A</item>
+        <item>AAAA</item>
+        <item>CAA</item>
+        <item>CERT</item>
+        <item>CNAME</item>
+        <item>DS</item>
+        <item>HTTPS</item>
+        <item>LOC</item>
+        <item>MX</item>
+        <item>NAPTR</item>
+        <item>NS</item>
+        <item>PTR</item>
+        <item>SMIMEA</item>
+        <item>SPF</item>
+        <item>SRV</item>
+        <item>SSHFP</item>
+        <item>SVCB</item>
+        <item>TLSA</item>
+        <item>TXT</item>
+        <item>URI</item>
+
+    </string-array>
+
+    <string-array name="image_compression">
+        <item>10 %</item>
+        <item>20 %</item>
+        <item>30 %</item>
+        <item>40 %</item>
+        <item>50 %</item>
+        <item>60 %</item>
+        <item>70 %</item>
+        <item>80 %</item>
+        <item>90 %</item>
+        <item>100 %</item>
+    </string-array>
+
+    <string-array name="maximum_upload">
+        <item>100 Mb</item>
+        <item>125 Mb</item>
+        <item>150 Mb</item>
+        <item>175 Mb</item>
+        <item>200 Mb</item>
+        <item>225 Mb</item>
+        <item>250 Mb</item>
+        <item>275 Mb</item>
+        <item>300 Mb</item>
+        <item>325 Mb</item>
+        <item>350 Mb</item>
+        <item>375 Mb</item>
+        <item>400 Mb</item>
+        <item>425 Mb</item>
+        <item>450 Mb</item>
+        <item>475 Mb</item>
+        <item>500 Mb</item>
+    </string-array>
+
+    <string-array name="cache_level">
+        <item>Standard</item>
+        <item>Ignore query string</item>
+        <item>No query string</item>
+    </string-array>
+
+    <string-array name="ttl">
+        <item>Auto</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>5 hours</item>
+        <item>6 hours</item>
+        <item>8 hours</item>
+        <item>12 hours</item>
+        <item>16 hours</item>
+        <item>20 hours</item>
+        <item>1 day</item>
+    </string-array>
+
+    <string-array name="browser_cache_ttl">
+        <item>Respect Headers</item>
+        <item>30s</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>5 minutes</item>
+        <item>20 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>5 hours</item>
+        <item>8 hours</item>
+        <item>12 hours</item>
+        <item>16 hours</item>
+        <item>20 hours</item>
+        <item>1 day</item>
+        <item>2 days</item>
+        <item>3 days</item>
+        <item>4 days</item>
+        <item>5 days</item>
+        <item>8 days</item>
+        <item>16 days</item>
+        <item>24 days</item>
+        <item>1 month</item>
+        <item>2 months</item>
+        <item>6 months</item>
+        <item>1 year</item>
+    </string-array>
+
+</resources>

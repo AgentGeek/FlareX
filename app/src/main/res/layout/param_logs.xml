@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="14dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp">
+
+    <ProgressBar
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:indeterminate="true"
+        android:id="@+id/param_progress"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/param_beta"
+                android:visibility="gone"
+                android:text="@string/beta"
+                android:textColor="@color/secondary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/primary"
+                android:id="@+id/param_name"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:id="@+id/param_description"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_select"
+        android:padding="12dp"
+        android:src="@drawable/ic_chevron_right"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:contentDescription="@string/cd_error"
+        android:src="@drawable/ic_error"
+        android:id="@+id/param_error"/>
+
+</LinearLayout>

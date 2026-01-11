@@ -1,0 +1,34 @@
+query GetZoneAnalytics($zoneTag: string, $since: string, $until: string) {
+  viewer {
+    zones(filter: {zoneTag: $zoneTag}) {
+      totals: httpRequests1dGroups(limit: 10000, filter: {date_geq: $since, date_lt: $until}) {
+        uniq {
+          uniques
+          __typename
+        }
+        __typename
+      }
+      zones: httpRequests1dGroups(orderBy: [date_ASC], limit: 10000, filter: {date_geq: $since, date_lt: $until}) {
+        dimensions {
+          timeslot: date
+          __typename
+        }
+        uniq {
+          uniques
+          __typename
+        }
+        sum {
+          bytes
+          cachedBytes
+          cachedRequests
+          pageViews
+          requests
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}

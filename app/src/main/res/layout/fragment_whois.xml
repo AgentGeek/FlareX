@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="12dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/domain_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/domain"
+            android:layout_marginVertical="10dp"
+            app:placeholderText="@string/domain_example"
+            app:endIconDrawable="@drawable/ic_magnifying_glass"
+            app:endIconMode="custom"
+            android:theme="@style/Theme.ColdCloud.TextInput"
+            style="@style/Theme.ColdCloud.TextInput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:id="@+id/domain_input"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/whois_result"
+            android:layout_marginBottom="16dp">
+
+            <!-- Domain -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/domain"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.Code"
+                android:id="@+id/whois_domain"/>
+
+            <!-- Date Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Creation Date -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.ColdCloud.TextDivider"
+                    android:text="@string/creation_date"/>
+
+                <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                <!-- Update Date -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.ColdCloud.TextDivider"
+                    android:text="@string/update_date"/>
+
+            </LinearLayout>
+
+            <!-- Date Value -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Creation Date -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.ColdCloud.Code"
+                    android:id="@+id/whois_date"/>
+
+                <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+
+                <!-- Update Date -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.ColdCloud.Code"
+                    android:id="@+id/whois_update_date"/>
+
+            </LinearLayout>
+
+            <!-- Country -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/country"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.Code"
+                android:id="@+id/whois_country"/>
+
+            <!-- Country -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/email"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.Code"
+                android:id="@+id/whois_email"/>
+
+            <!-- Organisation -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/organisation"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.Code"
+                android:id="@+id/whois_org"/>
+
+            <!-- Registrant -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/registrant"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.Code"
+                android:id="@+id/whois_registrant"/>
+
+            <!-- Registrar -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/registrar"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.Code"
+                android:id="@+id/whois_registrar"/>
+
+            <!-- Name Servers -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Theme.ColdCloud.TextDivider"
+                android:text="@string/nameservers"/>
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/whois_nameservers"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

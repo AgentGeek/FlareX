@@ -1,0 +1,19 @@
+query GetClientHTTPProtocol($zoneTag: string, $filter: ZonehttpRequests1hGroupsFilter_InputObject, $limit: uint64) {
+  viewer {
+    zones(filter: {zoneTag: $zoneTag}) {
+      httpProtocolNode: httpRequests1hGroups(limit: $limit, filter: $filter) {
+        sum {
+          clientHTTPVersionMap {
+            protocol: clientHTTPProtocol
+            count: requests
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}

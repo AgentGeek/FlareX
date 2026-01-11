@@ -1,0 +1,42 @@
+query ActivityLogQuery($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject, $activityFilter: FirewallEventsAdaptiveFilter_InputObject, $limit: int64!) {
+    viewer {
+      zones(filter: {zoneTag: $zoneTag}) {
+        total: firewallEventsAdaptiveByTimeGroups(limit: 1, filter: $filter) {
+          count
+          avg {
+            sampleInterval
+            __typename
+          }
+          __typename
+        }
+        activity: firewallEventsAdaptive(filter: $activityFilter, limit: $limit, orderBy: [datetime_DESC, rayName_DESC, matchIndex_ASC]) {
+          action
+          clientASNDescription
+          clientAsn
+          clientCountryName
+          clientIP
+          clientRequestHTTPHost
+          clientRequestHTTPMethodName
+          clientRequestHTTPProtocol
+          clientRequestPath
+          clientRequestQuery
+          datetime
+          rayName
+          ruleId
+          rulesetId
+          source
+          userAgent
+          matchIndex
+          metadata {
+            key
+            value
+            __typename
+          }
+          sampleInterval
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+}

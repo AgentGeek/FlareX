@@ -1,0 +1,149 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ColdCloud" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:statusBarColor" >@color/black</item>
+        <item name="android:progressBarStyle">@style/Theme.ColdCloud.Progress</item>
+        <item name="switchStyle">@style/Theme.ColdCloud.Switch</item>
+        <item name="materialButtonStyle">@style/Theme.ColdCloud.Button</item>
+        <item name="chipStyle">@style/Theme.ColdCloud.Chip</item>
+        <item name="tabStyle">@style/Theme.ColdCloud.Tab</item>
+        <item name="recyclerViewStyle">@style/Theme.ColdCloud.RecyclerView</item>
+        <item name="android:scrollViewStyle">@style/Theme.ColdCloud.RecyclerView</item>
+        <!-- Custom -->
+        <item name="iconColor">@color/white</item>
+        <item name="titleColor">@color/secondary</item>
+        <item name="chartTextColor">@color/white</item>
+    </style>
+
+    <!-- EditText -->
+    <style name="Theme.ColdCloud.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/box_outlined_edit_text</item>
+        <item name="strokeColor">@color/secondary</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="endIconTint">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+    </style>
+
+    <!-- Tabs -->
+    <style name="Theme.ColdCloud.Tab" parent="Widget.MaterialComponents.TabLayout.PrimarySurface">
+        <item name="tabIndicatorColor">@color/secondary</item>
+        <item name="tabTextColor">@color/tab_text</item>
+    </style>
+
+    <!-- Switch -->
+    <style name="Theme.ColdCloud.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.ColdCloud.Switch</item>
+    </style>
+    <style name="ThemeOverlay.ColdCloud.Switch" parent="">
+        <item name="colorOnSurface">@color/divider</item>
+        <item name="colorSecondary">@color/secondary</item>
+    </style>
+
+    <!-- Progress -->
+    <style name="Theme.ColdCloud.Progress" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/secondary</item>
+    </style>
+    <style name="Theme.ColdCloud.Progress.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateTint">@color/secondary</item>
+    </style>
+
+    <!-- Title -->
+    <style name="Theme.ColdCloud.Title" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/titleColor</item>
+    </style>
+
+    <!-- Code -->
+    <style name="Theme.ColdCloud.Code" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/hack_regular</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text Divider -->
+    <style name="Theme.ColdCloud.TextDivider" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/bg_text_divider</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">3dp</item>
+    </style>
+
+    <!-- Button -->
+    <style name="Theme.ColdCloud.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/black</item>
+        <item name="backgroundTint">@color/secondary</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="Theme.ColdCloud.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/secondary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <!-- Chip -->
+    <style name="Theme.ColdCloud.Chip" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">@color/background_chip</item>
+        <item name="android:textColor">@color/text_chip</item>
+    </style>
+
+    <style name="Theme.ColdCloud.Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- Bottom Sheet -->
+    <style name="Theme.ColdCloud.BottomSheet" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/Theme.ColdCloud.BottomSheetCorner</item>
+    </style>
+    <style name="Theme.ColdCloud.BottomSheetCorner" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <!-- Recycler View -->
+    <style name="Theme.ColdCloud.RecyclerView">
+        <item name="android:requiresFadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">10dp</item>
+    </style>
+
+    <!--
+        AMOLED VERSION
+    -->
+    <style name="Theme.ColdCloud.Amoled" parent="Theme.ColdCloud">
+        <item name="android:windowBackground">@color/black</item>
+
+        <item name="cardBackgroundColor">@color/background_card</item>
+        <item name="tabStyle">@style/Theme.ColdCloud.Amoled.Tab</item>
+        <item name="bottomNavigationStyle">@style/Theme.ColdCloud.Amoled.BottomNav</item>
+        <!--<item name="toolbarStyle">@style/Theme.ColdCloud.Amoled.Toolbar</item>-->
+    </style>
+
+    <style name="Theme.ColdCloud.Amoled.Tab" parent="Theme.ColdCloud.Tab">
+        <item name="tabBackground">@color/black</item>
+    </style>
+
+    <style name="Theme.ColdCloud.Amoled.BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@color/black</item>
+    </style>
+
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="primary">#FDD835</color>
+    <color name="secondary">#FBAD41</color>
+    <color name="icon">#FFFFFF</color>
+    <color name="divider">#373737</color>
+    <color name="error">#f44336</color>
+    <color name="info">#2196F3</color>
+    <color name="network">#4CAF50</color>
+
+    <color name="statusPending">#2196F3</color>
+    <color name="statusPause">#FF9800</color>
+    <color name="statusActive">#4CAF50</color>
+
+    <color name="cf_status_green">#46a46c</color>
+    <color name="cf_status_orange">#f38020</color>
+    <color name="cf_status_red">#da304c</color>
+
+    <color name="tls_none">#FBAD41</color>
+    <color name="tls10">#FCC373</color>
+    <color name="tls12">#82B6FF</color>
+    <color name="tls13">#4693FF</color>
+
+    <color name="content_js">#fbc02d</color>
+    <color name="content_html">#ef9a9a</color>
+    <color name="content_css">#4693FF</color>
+    <color name="content_pdf">#d32f2f</color>
+    <color name="content_gif">#8e24aa</color>
+    <color name="content_bin">#689f38</color>
+    <color name="content_png">#fb8c00</color>
+    <color name="content_jpeg">#f4511e</color>
+
+    <color name="content_json">#4693FF</color>
+    <color name="content_text">#FFFCF9</color>
+    <color name="content_svg">#6d4c41</color>
+    <color name="content_ico">#6d4c41</color>
+    <color name="content_woff">#6d4c41</color>
+
+    <color name="threat_bad_browser">#82b6ff</color>
+    <color name="threat_ip_block_user">#d32f2f</color>
+    <color name="threat_ip_range_16">#ff6659</color>
+    <color name="threat_ip_range_24">#9a0007</color>
+    <color name="threat_country_block">#6d4c41</color>
+    <color name="threat_ban_ip">#ff7043</color>
+    <color name="threat_bad_ip">#ffa270</color>
+    <color name="threat_blocked_hotlink">#004ba0</color>
+    <color name="threat_unknown">#9e9e9e</color>
+    <color name="threat_captcha_error">#2e7d32</color>
+    <color name="threat_new_captcha_cf">#60ad5e</color>
+    <color name="threat_new_captcha_user">#005005</color>
+    <color name="threat_browser_challenged">#607d8b</color>
+    <color name="threat_bot_request">#34515e</color>
+    <color name="threat_challenged_threat">#8eacbb</color>
+    <color name="threat_human_challenged">#7b1fa2</color>
+
+    <color name="background_light">#373737</color>
+    <color name="background_card">#212121</color>
+    <color name="background_grey">#616161</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+</resources>
