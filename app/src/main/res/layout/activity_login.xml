@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:id="@+id/progress"
-        style="@style/Theme.ColdCloud.Progress.Horizontal"/>
+        style="@style/Theme.FlareX.Progress.Horizontal"/>
 
     <FrameLayout
         android:layout_width="match_parent"

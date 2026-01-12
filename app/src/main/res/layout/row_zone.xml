@@ -30,7 +30,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    style="@style/Theme.ColdCloud.Title"
+                    style="@style/Theme.FlareX.Title"
                     android:id="@+id/zone_name"/>
 
                 <ImageView

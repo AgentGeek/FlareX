@@ -82,8 +82,8 @@ public class AppParamTheme extends Param implements AdapterView.OnItemSelectedLi
 
     static public int getTheme(int position) {
         switch (position) {
-            case 1: return R.style.Theme_ColdCloud_Amoled;
-            case 0: default: return R.style.Theme_ColdCloud;
+            case 1: return R.style.Theme_FlareX_Amoled;
+            case 0: default: return R.style.Theme_FlareX;
         }
     }
 

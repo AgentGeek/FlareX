@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 android:ellipsize="marquee"
                 android:maxLines="1"
-                style="@style/Theme.ColdCloud.Title"
+                style="@style/Theme.FlareX.Title"
                 android:id="@+id/account_name"/>
 
             <!-- Select Row -->

@@ -8,7 +8,7 @@
     <string name="apikey">API Key</string>
     <string name="test_and_connect"><![CDATA[Test & Connect]]></string>
     <string name="login_text">Login with your email and your master API Key\nYour credential are only store on your phone</string>
-    <string name="coldcloud">FlareX</string>
+    <string name="flarex">FlareX</string>
     <string name="no_zone_selected">No Zone Selected</string>
     <string name="swap_zone">Swap Zone</string>
     <string name="select_zone">Select Zone</string>
@@ -58,7 +58,7 @@
     <string name="websockets">WebSockets</string>
     <string name="websockets_description">Allow WebSockets connections to your origin server.</string>
     <string name="onion_routing">Onion Routing</string>
-    <string name="onion_routing_description">Onion Routing allows traffic from legitimate users on the Tor network through Cloudflare’s onion services rather than exit nodes, thereby improving privacy of the users and enabling more fine-grained protection.</string>
+    <string name="onion_routing_description">Onion Routing allows routing traffic from legitimate users on the Tor network through Cloudflare’s onion services rather than exit nodes, thereby improving privacy of the users and enabling more fine-grained protection.</string>
     <string name="ip_geo">IP Geolocation</string>
     <string name="ip_geo_description">Include the country code of the visitor location with all requests to your website. Note: You must retrieve the IP Geolocation information from the CF-IPCountry HTTP header.</string>
     <string name="pseudo_ipv4">Pseudo IPv4</string>
@@ -128,7 +128,7 @@
     <string name="remember_account_description">If enable the application will start with the last account selected</string>
     <string name="daily_stats">Daily Statistics</string>
     <string name="daily_stats_description">Receive daily stats for this zone, handle visitor, bandwidth, and cached bandwidth</string>
-    <string name="coldcloud_dash">FlareX -</string>
+    <string name="flarex_dash">FlareX -</string>
     <string name="error">Error</string>
     <string name="error_json">JSON Error</string>
     <string name="too_long">Too long</string>

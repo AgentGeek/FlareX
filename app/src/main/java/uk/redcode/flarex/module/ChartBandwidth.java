@@ -1,5 +1,5 @@
 /*
-    ColdCloud - Module - Chart Bandwidth
+    FlareX - Module - Chart Bandwidth
     Author: Louis
     Version: 1.0
  */

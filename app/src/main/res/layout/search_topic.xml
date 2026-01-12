@@ -23,8 +23,8 @@
         android:hint="@string/search"
         android:layout_marginHorizontal="12dp"
         android:layout_marginVertical="8dp"
-        android:theme="@style/Theme.ColdCloud.TextInput"
-        style="@style/Theme.ColdCloud.TextInput">
+        android:theme="@style/Theme.FlareX.TextInput"
+        style="@style/Theme.FlareX.TextInput">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

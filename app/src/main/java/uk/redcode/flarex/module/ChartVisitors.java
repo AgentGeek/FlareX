@@ -1,5 +1,5 @@
 /*
-    ColdCloud - Module - Chart Visitor
+    FlareX - Module - Chart Visitor
     Author: Louis
     Version: 1.0
  */

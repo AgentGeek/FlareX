@@ -3,6 +3,9 @@ package uk.redcode.flarex.network;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
+import android.webkit.CookieManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,12 +27,11 @@ import uk.redcode.flarex.object.Topic;
 public class CFCommunity {
 
     public static final String BASE_URL = "https://community.cloudflare.com";
-
     private static final RequestQueue requestQ = initRequestQueue();
 
-    /*
-        Listener
-     */
+    // Holds the session cookies cleared by the WAF
+    private static String validatedCookies = "";
+    private static final String USER_AGENT = "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36";
 
     public interface TopicListener {
         void onResult(ArrayList<Topic> topics);
@@ -44,19 +46,48 @@ public class CFCommunity {
         void onError(Exception e);
     }
 
-    /*
-        Core
-     */
-
     private static RequestQueue initRequestQueue() {
         RequestQueue rq = new RequestQueue(new NoCache(), new BasicNetwork(new HurlStack()));
         rq.start();
         return rq;
     }
 
-    /*
-        Request
+    /**
+     * WAF SOLVER: Call this once before any other methods.
+     * It waits for the 5-10 second browser check to pass.
      */
+    @SuppressLint("SetJavaScriptEnabled")
+    public static void prepareConnection(Context context, ResultListener listener) {
+        WebView webView = new WebView(context);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setUserAgentString(USER_AGENT);
+
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                String cookies = CookieManager.getInstance().getCookie(url);
+                if (cookies != null && cookies.contains("cf_clearance")) {
+                    validatedCookies = cookies;
+                    Log.d("CF_WAF", "WAF Cleared. Cookies: " + validatedCookies);
+                    listener.onResult();
+                    webView.destroy(); // Clean up memory
+                }
+            }
+        });
+
+        webView.loadUrl(BASE_URL);
+    }
+
+    private static void addRequest(CFRequest r) {
+        // Inject the WAF cookies and User-Agent before sending
+        if (!validatedCookies.isEmpty()) {
+            r.addedHeader.put("Cookie", validatedCookies);
+        }
+        r.addedHeader.put("User-Agent", USER_AGENT);
+        requestQ.add(r);
+    }
+
+    /* --- Modified Requests --- */
 
     public static void getLatest(Context context, int page, TopicListener listener) {
         @SuppressLint("DefaultLocale") final String url = String.format("%s/latest.json?ascending=false&page=%d", BASE_URL, page);
@@ -74,7 +105,7 @@ public class CFCommunity {
                 listener.onError(e);
             }
         });
-        requestQ.add(r);
+        addRequest(r);
     }
 
     public static void getTop(Context context, int page, TopicListener listener) {
@@ -93,7 +124,7 @@ public class CFCommunity {
                 listener.onError(e);
             }
         });
-        requestQ.add(r);
+        addRequest(r);
     }
 
     public static void getCategories(Context context, CategoryListener listener) {
@@ -112,7 +143,7 @@ public class CFCommunity {
                 listener.onError(e);
             }
         });
-        requestQ.add(r);
+        addRequest(r);
     }
 
     @SuppressLint("DefaultLocale")
@@ -124,7 +155,8 @@ public class CFCommunity {
             public void onResult(JSONObject body) throws JSONException {
                 topic.streams = Parser.parseIntList(body.getJSONObject("post_stream").getJSONArray("stream"));
                 topic.posts = Topic.Post.parse(body.getJSONObject("post_stream").getJSONArray("posts"));
-                if (body.has("accepted_answer") && !body.isNull("accepted_answer")) topic.solution = body.getJSONObject("accepted_answer").getInt("post_number");
+                if (body.has("accepted_answer") && !body.isNull("accepted_answer"))
+                    topic.solution = body.getJSONObject("accepted_answer").getInt("post_number");
                 listener.onResult();
             }
 
@@ -135,13 +167,12 @@ public class CFCommunity {
                 listener.onError(e);
             }
         });
-        requestQ.add(r);
+        addRequest(r);
     }
 
     @SuppressLint("DefaultLocale")
     public static void getNextContent(Context context, Topic topic, ResultListener listener) {
         final String url = String.format("%s/t/%d/posts.json?%s", BASE_URL, topic.id, createUrlArgument(topic));
-        Log.d("HERE", "getNextContent: "+url);
 
         CFRequest r = new CFRequest(context, Request.Method.GET, url, null, new CFRequest.Listener() {
             @Override
@@ -157,7 +188,7 @@ public class CFCommunity {
                 listener.onError(e);
             }
         });
-        requestQ.add(r);
+        addRequest(r);
     }
 
     private static String createUrlArgument(Topic topic) {
@@ -167,15 +198,12 @@ public class CFCommunity {
             arg.append("post_ids[]=").append(topic.streams.get(step));
             arg.append("&");
             step++;
-            if (step > topic.posts.size()+10) break;
+            if (step > topic.posts.size() + 10) break;
         }
-        arg.delete(arg.length()-1, arg.length());
+        if (arg.length() > 0) arg.delete(arg.length() - 1, arg.length());
         return arg.toString();
     }
 
-    /*
-        Search
-    */
     public static void search(Context context, String search, TopicListener listener) {
         @SuppressLint("DefaultLocale") final String url = String.format("%s/search?q=%s&page=1", BASE_URL, search);
 
@@ -193,6 +221,6 @@ public class CFCommunity {
             }
         });
         r.addedHeader.put("Accept", "application/json");
-        requestQ.add(r);
+        addRequest(r);
     }
 }

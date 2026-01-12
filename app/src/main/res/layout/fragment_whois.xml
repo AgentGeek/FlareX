@@ -19,8 +19,8 @@
             app:placeholderText="@string/domain_example"
             app:endIconDrawable="@drawable/ic_magnifying_glass"
             app:endIconMode="custom"
-            android:theme="@style/Theme.ColdCloud.TextInput"
-            style="@style/Theme.ColdCloud.TextInput">
+            android:theme="@style/Theme.FlareX.TextInput"
+            style="@style/Theme.FlareX.TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -43,12 +43,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/domain"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.Code"
+                style="@style/Theme.FlareX.Code"
                 android:id="@+id/whois_domain"/>
 
             <!-- Date Header -->
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Theme.ColdCloud.TextDivider"
+                    style="@style/Theme.FlareX.TextDivider"
                     android:text="@string/creation_date"/>
 
                 <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Theme.ColdCloud.TextDivider"
+                    style="@style/Theme.FlareX.TextDivider"
                     android:text="@string/update_date"/>
 
             </LinearLayout>
@@ -85,7 +85,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Theme.ColdCloud.Code"
+                    style="@style/Theme.FlareX.Code"
                     android:id="@+id/whois_date"/>
 
                 <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
@@ -94,7 +94,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Theme.ColdCloud.Code"
+                    style="@style/Theme.FlareX.Code"
                     android:id="@+id/whois_update_date"/>
 
             </LinearLayout>
@@ -103,67 +103,67 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/country"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.Code"
+                style="@style/Theme.FlareX.Code"
                 android:id="@+id/whois_country"/>
 
             <!-- Country -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/email"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.Code"
+                style="@style/Theme.FlareX.Code"
                 android:id="@+id/whois_email"/>
 
             <!-- Organisation -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/organisation"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.Code"
+                style="@style/Theme.FlareX.Code"
                 android:id="@+id/whois_org"/>
 
             <!-- Registrant -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/registrant"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.Code"
+                style="@style/Theme.FlareX.Code"
                 android:id="@+id/whois_registrant"/>
 
             <!-- Registrar -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/registrar"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.Code"
+                style="@style/Theme.FlareX.Code"
                 android:id="@+id/whois_registrar"/>
 
             <!-- Name Servers -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Theme.ColdCloud.TextDivider"
+                style="@style/Theme.FlareX.TextDivider"
                 android:text="@string/nameservers"/>
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"

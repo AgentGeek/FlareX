@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:layout_gravity="center"
-        android:text="ColdCloud application is locked,\nplease use your fingerprint to unlock it"/>
+        android:text="FlareX application is locked,\nplease use your fingerprint to unlock it"/>
 
     <TextView
         android:layout_width="wrap_content"

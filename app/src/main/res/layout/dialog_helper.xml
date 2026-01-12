@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/cd_helper_01"
                 android:adjustViewBounds="true"
-                android:src="@drawable/coldcloud_help_01"/>
+                android:src="@drawable/flarex_help_01"/>
 
             <!-- 2: Go To Profile -->
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/cd_helper_02"
                 android:adjustViewBounds="true"
-                android:src="@drawable/coldcloud_help_02"/>
+                android:src="@drawable/flarex_help_02"/>
 
             <!-- 3: Select API Tokens -->
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/cd_helper_03"
                 android:adjustViewBounds="true"
-                android:src="@drawable/coldcloud_help_03"/>
+                android:src="@drawable/flarex_help_03"/>
 
             <!-- 4: Locate Global Key -->
             <TextView
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/cd_helper_04"
                 android:adjustViewBounds="true"
-                android:src="@drawable/coldcloud_help_04"/>
+                android:src="@drawable/flarex_help_04"/>
 
             <!-- 5: Done -->
             <TextView
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/cd_helper_05"
                 android:adjustViewBounds="true"
-                android:src="@drawable/coldcloud_help_05"/>
+                android:src="@drawable/flarex_help_05"/>
 
 
         </LinearLayout>

@@ -49,6 +49,8 @@ public class FragmentCommunity extends FragmentCC implements TopicAdapter.TopicL
     private TopicAdapter adapterTop = null;
     private ArrayList<Topic> searchResult = null;
 
+    private boolean wafCleared = false;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -106,15 +108,35 @@ public class FragmentCommunity extends FragmentCC implements TopicAdapter.TopicL
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        updateView();
+        if (!wafCleared) {
+            setLoading(true);
+            Toast.makeText(requireContext(), R.string.community_first_run, Toast.LENGTH_LONG).show();
+            CFCommunity.prepareConnection(requireContext(), new CFCommunity.ResultListener() {
+                @Override
+                public void onResult() {
+                    wafCleared = true;
+                    updateView();
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    setLoading(false);
+                    Toast.makeText(requireContext(), "Failed to clear browser check", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            updateView();
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        TabLayout.Tab tab = tabs.getTabAt(actualView);
-        if (tab != null) tab.select();
-        updateView();
+        if (wafCleared) {
+            TabLayout.Tab tab = tabs.getTabAt(actualView);
+            if (tab != null) tab.select();
+            updateView();
+        }
     }
 
     @Override
@@ -123,6 +145,8 @@ public class FragmentCommunity extends FragmentCC implements TopicAdapter.TopicL
     }
 
     private void updateView() {
+        if (!wafCleared) return;
+
         if (actualView == SEARCH) {
             tabs.setVisibility(View.GONE);
             showSearchResult();

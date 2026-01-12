@@ -5,4 +5,4 @@
     android:layout_gravity="center_horizontal"
     android:layout_marginHorizontal="12dp"
     android:id="@+id/post_btn"
-    style="@style/Theme.ColdCloud.Button.Outlined"/>
+    style="@style/Theme.FlareX.Button.Outlined"/>

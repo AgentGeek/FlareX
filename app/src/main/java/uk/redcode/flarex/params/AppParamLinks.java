@@ -13,9 +13,9 @@ import uk.redcode.flarex.object.Zone;
 
 public class AppParamLinks extends Param {
 
-    private final static String LINK_TELEGRAM = "https://t.me/ColdCloudApp";
-    private final static String LINK_GITLAB = "https://gitlab.com/stevyneutron/coldcloud-android";
-    private final static String LINK_WEBSITE = "https://coldcloud.app";
+    private final static String LINK_TELEGRAM = "https://t.me/FlareXapp";
+    private final static String LINK_GITLAB = "https://github.com/AgentGeek/FlareX";
+    private final static String LINK_WEBSITE = "https://flarex.redcode.uk";
 
     private Activity activity;
 

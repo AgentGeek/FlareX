@@ -205,11 +205,23 @@ public class MainActivity extends AppCompatActivity {
         this.unlocked = false;
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         if (viewManager == null) super.onBackPressed();
         else viewManager.onBackPressed(this);
+    } */
+
+    @Override
+    public void onBackPressed() {
+        if (viewManager != null) {
+            viewManager.onBackPressed(this);
+            // Note: This assumes the manager ALWAYS handles the back press
+            // If it doesn't, the app will seem like the back button is broken.
+        } else {
+            super.onBackPressed();
+        }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

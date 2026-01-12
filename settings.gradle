@@ -6,7 +6,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "ColdCloud"
+rootProject.name = "FlareX"
 include ':app'
 
 dependencyResolutionManagement {

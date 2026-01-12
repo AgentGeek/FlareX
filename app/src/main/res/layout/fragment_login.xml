@@ -25,10 +25,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/coldcloud"
+        android:text="@string/flarex"
         android:layout_gravity="center"
         android:layout_marginVertical="14dp"
-        style="@style/Theme.ColdCloud.Title"/>
+        style="@style/Theme.FlareX.Title"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -70,8 +70,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/email"
         android:layout_marginVertical="10dp"
-        android:theme="@style/Theme.ColdCloud.TextInput"
-        style="@style/Theme.ColdCloud.TextInput">
+        android:theme="@style/Theme.FlareX.TextInput"
+        style="@style/Theme.FlareX.TextInput">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -90,8 +90,8 @@
         android:layout_marginVertical="10dp"
         app:endIconDrawable="@drawable/ic_clipboard"
         app:endIconMode="custom"
-        android:theme="@style/Theme.ColdCloud.TextInput"
-        style="@style/Theme.ColdCloud.TextInput">
+        android:theme="@style/Theme.FlareX.TextInput"
+        style="@style/Theme.FlareX.TextInput">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
             app:iconTint="?attr/iconColor"
             app:iconPadding="10dp"
             android:id="@+id/help_btn"
-            style="@style/Theme.ColdCloud.Button.Outlined"/>
+            style="@style/Theme.FlareX.Button.Outlined"/>
 
         <View
             android:layout_width="0dp"

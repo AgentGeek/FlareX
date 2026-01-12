@@ -9,7 +9,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/Theme.ColdCloud.Title"
+            style="@style/Theme.FlareX.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -23,7 +23,7 @@
             android:id="@+id/ip_v4_group"/>
 
         <TextView
-            style="@style/Theme.ColdCloud.Title"
+            style="@style/Theme.FlareX.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"

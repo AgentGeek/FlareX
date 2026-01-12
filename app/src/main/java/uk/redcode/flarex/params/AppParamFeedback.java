@@ -45,8 +45,8 @@ public class AppParamFeedback extends Param {
 
     private void feedback() {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:louis.vaisset@protonmail.com"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, "ColdCloud Feedback");
+        intent.setData(Uri.parse("mailto:redknight@redcode.uk"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "FlareX Feedback");
 
         context.startActivity(Intent.createChooser(intent, "Send Feedback"));
     }

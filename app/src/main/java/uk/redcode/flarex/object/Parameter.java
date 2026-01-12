@@ -92,7 +92,7 @@ public class Parameter {
             case SPEED:  return R.string.speed;
             case SCRAPE_SHIELD: return R.string.scrape_shield;
             case NOTIFICATIONS: return R.string.notifications;
-            case APP: return R.string.coldcloud;
+            case APP: return R.string.flarex;
             default: return R.string.question;
         }
     }
