@@ -2,8 +2,9 @@ This app is a modified work of original ColdCloud by [Stevy](https://gitlab.com/
 
 
 
-![Get it on Google Play](https://pcdn.ximg.us/images/public/GetItOnGooglePlay.png)
-
+<a href="https://play.google.com/store/apps/details?id=uk.redcode.flarex" title="Get FlareX on Google Play">
+<img src="https://pcdn.ximg.us/images/public/GetItOnGooglePlay.png" alt="Get it on Google Play" width="250"/>
+</a>
 
 
 Note: I have changed the package name and app name as there are some changes without them it won't be the fan favorite ColdCloud especially the Google Maps integration.
