@@ -85,7 +85,9 @@ public class FragmentLogin extends Fragment {
             keyInput.setText(key);
         } catch (Exception e) {
             Logger.error(e);
-            Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            String message = e.getLocalizedMessage();
+            if (message == null || message.isEmpty()) message = "Unknown Error";
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -135,7 +137,9 @@ public class FragmentLogin extends Fragment {
 
     private void showError(Exception error) {
         Logger.error(error);
-        String msg = error.getMessage().startsWith("400") ? getString(R.string.invalid_credential) : error.getMessage();
+        String message = error.getMessage();
+        if (message == null || message.isEmpty()) message = "Unknown Error";
+        String msg = message.startsWith("400") ? getString(R.string.invalid_credential) : message;
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show();
     }
 

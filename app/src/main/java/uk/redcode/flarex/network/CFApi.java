@@ -128,10 +128,15 @@ public class CFApi {
         return rq;
     }
 
+    private static void showToast(Context context, String message, int duration) {
+        if (message == null || message.isEmpty()) message = "Unknown Error";
+        Toast.makeText(context, message, duration).show();
+    }
+
     public static void testAndSave(Context context, String email, String apikey, TestListener listener) {
         final String url = API_URL + "/zones";
 
-        CFRequest r = new CFRequest(context, Request.Method.GET, url, null, new CFRequest.Listener() {
+        CFRequest r = new CFRequest(context, Request.Method.GET, url, null, email, apikey, TYPE_MASTER_KEY, new CFRequest.Listener() {
             @Override
             public void onResult(JSONObject body) throws JSONException {
                 if (!body.getBoolean("success")) {
@@ -146,25 +151,23 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                showToast(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT);
                 listener.onError(e);
             }
         });
 
-        r.email = email;
-        r.apikey = apikey;
         requestQ.add(r);
     }
 
     public static void verifyToken(Context context, String token, TestListener listener) {
         final String url = API_URL + "/user/tokens/verify";
 
-        CFRequest r = new CFRequest(context, Request.Method.GET, url, null, new CFRequest.Listener() {
+        CFRequest r = new CFRequest(context, Request.Method.GET, url, null, null, token, TYPE_TOKEN, new CFRequest.Listener() {
             @Override
             public void onResult(JSONObject body) throws JSONException {
                 if (!body.getBoolean("success")) {
-                    if (body.getJSONArray("errors").length() > 0) Toast.makeText(context, body.getJSONArray("errors").getJSONObject(0).getString("message"), Toast.LENGTH_SHORT).show();
-                    else Toast.makeText(context, "Error reading cloudflare response", Toast.LENGTH_SHORT).show();
+                    if (body.getJSONArray("errors").length() > 0) showToast(context, body.getJSONArray("errors").getJSONObject(0).getString("message"), Toast.LENGTH_SHORT);
+                    else showToast(context, "Error reading cloudflare response", Toast.LENGTH_SHORT);
                     listener.onError(new Exception("Error reading cloudflare response"));
                 } else {
                     saveCredential(context, "Token User", token, CFApi.TYPE_TOKEN);
@@ -175,13 +178,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                showToast(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT);
                 listener.onError(e);
             }
         });
 
-        r.apikey = token;
-        r.mode = CFApi.TYPE_TOKEN;
         requestQ.add(r);
     }
 
@@ -211,12 +212,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -232,12 +232,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -248,7 +247,7 @@ public class CFApi {
     public static void getStatus(Context context, HTMLListener listener) {
         StringRequest r = new StringRequest(Request.Method.GET, STATUS_URL, listener::onResult, error -> {
             Logger.error(error);
-            Toast.makeText(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            showToast(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT);
             listener.onError(error);
         });
 
@@ -260,7 +259,7 @@ public class CFApi {
 
         StringRequest r = new StringRequest(Request.Method.GET, url, listener::onResult, error -> {
             Logger.error(error);
-            Toast.makeText(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            showToast(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT);
             listener.onError(error);
         });
 
@@ -270,7 +269,7 @@ public class CFApi {
     public static void getBlogPost(Context context, String url, HTMLListener listener) {
         StringRequest r = new StringRequest(Request.Method.GET, url, listener::onResult, error -> {
             Logger.error(error);
-            Toast.makeText(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            showToast(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT);
             listener.onError(error);
         });
 
@@ -293,12 +292,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -318,12 +316,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -340,12 +337,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -362,12 +358,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -384,12 +379,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -409,12 +403,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -430,11 +423,11 @@ public class CFApi {
             public void onResult(JSONObject body) throws JSONException {
                 if (body.isNull("data")) {
                     Logger.warning(TAG, "Graphql data is null");
-                    Toast.makeText(context, "Graphql data is null", Toast.LENGTH_LONG).show();
+                    showToast(context, "Graphql data is null", Toast.LENGTH_LONG);
                     listener.onError(new Exception("Graphql data is null"));
                 } else if (!body.getJSONObject("data").has("viewer")) {
                     Logger.warning(TAG, "No viewer body");
-                    Toast.makeText(context, "No viewer body", Toast.LENGTH_LONG).show();
+                    showToast(context, "No viewer body", Toast.LENGTH_LONG);
                     listener.onError(new Exception("No viewer body"));
                 } else {
                     listener.onResult(body);
@@ -444,12 +437,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -470,12 +462,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -492,12 +483,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -514,12 +504,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -536,12 +525,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -561,12 +549,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -579,7 +566,7 @@ public class CFApi {
             sendPatchSettings(context, url, data, listener, zone, requiredPlan);
         } catch (JSONException e) {
             Logger.error(e);
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            showToast(context, e.getMessage(), Toast.LENGTH_LONG);
             listener.onError(e);
         }
     }
@@ -593,7 +580,7 @@ public class CFApi {
             sendPatchSettings(context, url, data, listener, zone, requiredPlan);
         } catch (JSONException e) {
             Logger.error(e);
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            showToast(context, e.getMessage(), Toast.LENGTH_LONG);
             listener.onError(e);
         }
     }
@@ -607,7 +594,7 @@ public class CFApi {
             sendPatchSettings(context, url, data, listener, zone, requiredPlan);
         } catch (JSONException e) {
             Logger.error(e);
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            showToast(context, e.getMessage(), Toast.LENGTH_LONG);
             listener.onError(e);
         }
     }
@@ -621,7 +608,7 @@ public class CFApi {
             sendPatchSettings(context, url, data, listener, zone, requiredPlan);
         } catch (JSONException e) {
             Logger.error(e);
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            showToast(context, e.getMessage(), Toast.LENGTH_LONG);
             listener.onError(e);
         }
     }
@@ -642,12 +629,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -672,16 +658,15 @@ public class CFApi {
                 @Override
                 public void onError(Exception e) {
                     Logger.error(e);
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                     listener.onError(e);
                 }
             });
 
-            r.load(context);
             requestQ.add(r);
         } catch (JSONException e) {
             Logger.error(e);
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            showToast(context, e.getMessage(), Toast.LENGTH_LONG);
             listener.onError(e);
         }
     }
@@ -702,12 +687,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -723,12 +707,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -748,12 +731,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -773,12 +755,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -798,12 +779,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 
@@ -823,12 +803,11 @@ public class CFApi {
             @Override
             public void onError(Exception e) {
                 Logger.error(e);
-                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                showToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 listener.onError(e);
             }
         });
 
-        r.load(context);
         requestQ.add(r);
     }
 

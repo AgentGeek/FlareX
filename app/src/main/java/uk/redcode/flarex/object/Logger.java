@@ -75,6 +75,16 @@ public class Logger {
         Error
      */
 
+    public static void error(String s) {
+        String log = String.format("%s %s %s", ERROR, getTime(), s);
+        logs.add(log);
+        if (BuildConfig.DEBUG) Log.e(TAG, log);
+    }
+
+    public static void error(String tag, String s) {
+        error(String.format("{%s} %s", tag, s));
+    }
+
     public static void error(Exception e) {
         String log = String.format("%s %s %s %s", ERROR, getTime(), e.getMessage(), e);
         logs.add(log);

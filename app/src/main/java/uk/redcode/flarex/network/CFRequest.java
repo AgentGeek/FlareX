@@ -35,7 +35,12 @@ public class CFRequest extends JsonObjectRequest {
         void onResult(JSONObject body) throws JSONException;
         void onError(Exception e);
     }
+
     public CFRequest(Context context, int method, String url, @Nullable JSONObject data, Listener listener) {
+        this(context, method, url, data, null, null, -1, listener);
+    }
+
+    public CFRequest(Context context, int method, String url, @Nullable JSONObject data, String testEmail, String testKey, int testMode, Listener listener) {
         super(method, url, data, response -> {
             try {
                 listener.onResult(response);
@@ -50,9 +55,17 @@ public class CFRequest extends JsonObjectRequest {
             if (context instanceof MainActivity) ((MainActivity) context).showAlert(new Alert(Alert.ERROR, error.getMessage()));
         });
         
-        load(context);
-        Logger.network(TAG, url);
         this.listener = listener;
+        
+        if (testMode != -1) {
+            this.email = testEmail != null ? testEmail : "";
+            this.apikey = testKey != null ? testKey : "";
+            this.mode = testMode;
+        } else {
+            load(context);
+        }
+        
+        Logger.network(TAG, "Request Created: " + url);
     }
 
     @Override

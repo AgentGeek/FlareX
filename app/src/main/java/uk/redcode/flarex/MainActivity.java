@@ -5,10 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.activity.OnBackPressedCallback;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,8 +18,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 import uk.redcode.flarex.activity.LoginActivity;
 import uk.redcode.flarex.fragment.FragmentCloudflarePost;
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(null);
+        super.onCreate(savedInstanceState);
 
         // define theme
         int theme = AppParameter.getInt(this, AppParameter.THEME, 0);
@@ -74,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             Logger.info("User not connected, show LoginActivity");
             Intent login = new Intent(this, LoginActivity.class);
             startActivity(login);
+            finish(); // Finish MainActivity so user can't go back to empty dashboard
             return;
         }
 
@@ -83,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
         progress = findViewById(R.id.progress);
         alertContainer = findViewById(R.id.alert_container);
         bottomNav = findViewById(R.id.bottom_nav);
+        
+        if (toolbar == null || toolbarTitle == null || toolbarIcon == null || 
+            progress == null || alertContainer == null || bottomNav == null) {
+            Logger.error("Failed to initialize UI elements: progress=" + (progress == null));
+            return;
+        }
+        
         setSupportActionBar(toolbar);
         setLoading(false);
 
@@ -90,12 +96,29 @@ public class MainActivity extends AppCompatActivity {
         accountManager = new AccountManager(this);
         viewManager = new ViewManager(this, zoneManager);
 
-        runView();
+        setupBackPressedHandler();
+        // runView() is called in onResume()
+    }
+
+    private void setupBackPressedHandler() {
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (viewManager != null) {
+                    viewManager.onBackPressed(MainActivity.this);
+                } else {
+                    finish();
+                }
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     private void runView() {
         // reset
-        if (viewManager != null) viewManager.resetAllView();
+        if (viewManager == null || zoneManager == null) return;
+        
+        viewManager.resetAllView();
 
         // build bottom nav
         buildBottomNav();
@@ -111,15 +134,22 @@ public class MainActivity extends AppCompatActivity {
 
         // run home
         viewManager.setView(viewHome, null);
-        if (Objects.equals(viewHome, ViewManager.VIEW_ZONE_SELECTOR)) setLoading(true);
+        if (ViewManager.VIEW_ZONE_SELECTOR.equals(viewHome)) setLoading(true);
     }
 
     private String getHomeView() {
-        int home = bottomNav.getMenu().getItem(0).getItemId();
+        if (bottomNav == null || bottomNav.getMenu().size() == 0) {
+            return ViewManager.VIEW_SETTINGS;
+        }
+        
+        MenuItem firstItem = bottomNav.getMenu().getItem(0);
+        if (firstItem == null) return ViewManager.VIEW_SETTINGS;
+        
+        int home = firstItem.getItemId();
         if (home == R.id.nav_dashboard) return ViewManager.VIEW_DASHBOARD;
         if (home == R.id.nav_dns) return ViewManager.VIEW_DNS;
         if (home == R.id.nav_apps) return ViewManager.VIEW_APPS;
-        if (home == R.id.nav_community) return ViewManager.VIEW_COMMUNITY;
+        //if (home == R.id.nav_community) return ViewManager.VIEW_COMMUNITY;
         if (home == R.id.nav_settings) return ViewManager.VIEW_SETTINGS;
 
         showAlert(new Alert(Alert.ERROR, "Internal Error loading home view"));
@@ -127,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buildBottomNav() {
+        if (bottomNav == null) return;
+        
         try {
             bottomNav.getMenu().clear();
             Menu menu = bottomNav.getMenu();
@@ -135,11 +167,11 @@ public class MainActivity extends AppCompatActivity {
             if (LayoutManager.get(LayoutManager.DNS)) menu.add(Menu.NONE, R.id.nav_dns, Menu.NONE, getString(R.string.dns)).setIcon(R.drawable.ic_dns);
 
             menu.add(Menu.NONE, R.id.nav_apps, Menu.NONE, getString(R.string.apps)).setIcon(R.drawable.ic_apps);
-            menu.add(Menu.NONE, R.id.nav_community, Menu.NONE, getString(R.string.community)).setIcon(R.drawable.ic_community);
+            // Community hidden for now
+            // menu.add(Menu.NONE, R.id.nav_community, Menu.NONE, getString(R.string.community)).setIcon(R.drawable.ic_community);
             menu.add(Menu.NONE, R.id.nav_settings, Menu.NONE, getString(R.string.settings)).setIcon(R.drawable.ic_settings);
         } catch (Exception e) {
-            Log.d("UI", "Error configuring menu");
-            e.printStackTrace();
+            Logger.error("Error configuring menu: " + e.getMessage());
         }
     }
 
@@ -161,21 +193,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onToolbarIconClick() {
+        if (viewManager == null || viewManager.actualFragment == null) return;
+        
         if (viewManager.actualView.equals(ViewManager.VIEW_FIREWALL)) {
-            ((FragmentFirewall) viewManager.actualFragment).onBack();
+            if (viewManager.actualFragment instanceof FragmentFirewall) {
+                ((FragmentFirewall) viewManager.actualFragment).onBack();
+            }
             return;
         }
+        
         if (!viewManager.actualFragment.enableBackView) return;
 
-        if (viewManager.actualView.equals(ViewManager.VIEW_CLOUDFLARE_STATUS)) {
-            String lastView = viewManager.actualFragment.lastView;
+        String lastView = viewManager.actualFragment.lastView;
+        if (lastView != null) {
             viewManager.setView(lastView, null);
-        } else {
-            viewManager.setView(viewManager.actualFragment.lastView, null);
         }
     }
 
-    public void setLoading(boolean loading) { progress.setVisibility(loading ? View.VISIBLE : View.GONE); }
+    public void setLoading(boolean loading) { 
+        if (progress != null) {
+            progress.setVisibility(loading ? View.VISIBLE : View.GONE);
+        }
+    }
 
     public void setTitle(String title) { toolbarTitle.setText(title); }
     public void setTitle(int resId) { toolbarTitle.setText(resId); }
@@ -205,26 +244,11 @@ public class MainActivity extends AppCompatActivity {
         this.unlocked = false;
     }
 
-    /*@Override
-    public void onBackPressed() {
-        if (viewManager == null) super.onBackPressed();
-        else viewManager.onBackPressed(this);
-    } */
-
-    @Override
-    public void onBackPressed() {
-        if (viewManager != null) {
-            viewManager.onBackPressed(this);
-            // Note: This assumes the manager ALWAYS handles the back press
-            // If it doesn't, the app will seem like the back button is broken.
-        } else {
-            super.onBackPressed();
-        }
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (viewManager == null) return false;
+        
         if (item.getItemId() == R.id.swap_zone) {
             viewManager.setView(ViewManager.VIEW_ZONE_SELECTOR, null);
             return true;
@@ -241,17 +265,28 @@ public class MainActivity extends AppCompatActivity {
             viewManager.setView(ViewManager.VIEW_CLOUDFLARE_BLOG, null);
             return true;
         } else if (item.getItemId() == R.id.actualise_status && viewManager.actualView.equals(ViewManager.VIEW_CLOUDFLARE_STATUS)) {
-            ((FragmentCloudflareStatus) viewManager.actualFragment).updateList();
+            if (viewManager.actualFragment instanceof FragmentCloudflareStatus) {
+                ((FragmentCloudflareStatus) viewManager.actualFragment).updateList();
+            }
             return true;
         } else if (item.getItemId() == R.id.nav_logout) {
             logout();
             return true;
         } else if (item.getItemId() == R.id.show_on_web) {
-            if (viewManager.actualView.equals(ViewManager.VIEW_CLOUDFLARE_POST)) ((FragmentCloudflarePost) viewManager.actualFragment).showOnWeb();
-            if (viewManager.actualView.equals(ViewManager.VIEW_COMMUNITY_TOPIC)) ((FragmentTopic) viewManager.actualFragment).showOnWeb();
+            if (viewManager.actualView.equals(ViewManager.VIEW_CLOUDFLARE_POST) && 
+                viewManager.actualFragment instanceof FragmentCloudflarePost) {
+                ((FragmentCloudflarePost) viewManager.actualFragment).showOnWeb();
+            }
+            if (viewManager.actualView.equals(ViewManager.VIEW_COMMUNITY_TOPIC) && 
+                viewManager.actualFragment instanceof FragmentTopic) {
+                ((FragmentTopic) viewManager.actualFragment).showOnWeb();
+            }
             return true;
         } else if (item.getItemId() == R.id.search_topic) {
-            if (viewManager.actualView.equals(ViewManager.VIEW_COMMUNITY)) ((FragmentCommunity) viewManager.actualFragment).openSearch();
+            if (viewManager.actualView.equals(ViewManager.VIEW_COMMUNITY) && 
+                viewManager.actualFragment instanceof FragmentCommunity) {
+                ((FragmentCommunity) viewManager.actualFragment).openSearch();
+            }
             return true;
         }
         return false;
@@ -260,11 +295,12 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
         setLoading(true);
         User.logout(this);
-        viewManager.resetAllView();
+        if (viewManager != null) viewManager.resetAllView();
 
         // run login
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void showAlert(Alert alert) {
