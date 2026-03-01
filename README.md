@@ -2,7 +2,7 @@ This app is a modified work of original ColdCloud by [Stevy](https://gitlab.com/
 
 
 
-<a href="https://play.google.com/store/apps/details?id=uk.redcode.flarex" title="Get FlareX on Google Play">
+<a href="https://play.google.com/store/apps/details?id=in.ankrypt.flarex" title="Get FlareX on Google Play">
 <img src="https://pcdn.ximg.us/images/public/GetItOnGooglePlay.png" alt="Get it on Google Play" width="250"/>
 </a>
 
